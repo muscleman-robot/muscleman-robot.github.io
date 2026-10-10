@@ -30,7 +30,7 @@ Static, single-page site for double-blind review. No external requests, no analy
 
 ## Adding videos
 
-Replace a `<div class="video-slot">` in `index.html` with:
+Replace a `<div class="placeholder">` in `index.html` with:
 
 ```html
 <video controls muted playsinline preload="metadata" src="./static/videos/FILE.mp4"></video>
