@@ -1,0 +1,39 @@
+/* Styles adapted from the Nerfies project page template (CC BY-SA 4.0). */
+body { font-family: 'Noto Sans', sans-serif; }
+
+.publication-title, .publication-subtitle, .title, .dnerf { font-family: 'Google Sans', sans-serif; }
+.publication-title { margin-bottom: 0.5rem !important; }
+.publication-subtitle { color: #4a4a4a; margin-top: 0.5rem !important; }
+.publication-authors { font-family: 'Google Sans', sans-serif; }
+.publication-authors .author-block { display: inline-block; }
+.publication-links { margin-top: 1rem; }
+.link-block a { margin-top: 5px; margin-bottom: 5px; }
+.dnerf { font-variant: small-caps; font-weight: 600; }
+
+.hero.teaser .hero-body { padding-top: 0; padding-bottom: 3rem; }
+.teaser-caption { margin-top: 1rem; font-size: 1.15rem; }
+
+.placeholder {
+  aspect-ratio: 16 / 9; width: 100%; border: 2px dashed #dbdbdb; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  color: #7a7a7a; background: #fafafa; font-family: 'Google Sans', sans-serif; padding: 1rem;
+}
+.placeholder.small { font-size: 0.95rem; }
+.video-caption { text-align: center; color: #4a4a4a; margin-top: 0.5rem; }
+video { width: 100%; border-radius: 10px; }
+#videos .title { margin-top: 1.5rem; }
+
+.stats { margin-top: 1.5rem; }
+.stat-num { font-family: 'Google Sans', sans-serif; font-size: 2rem; font-weight: 700; color: #b5452b; margin-bottom: 0 !important; }
+.stat-lbl { color: #4a4a4a; font-size: 0.95rem; }
+
+.method-figure { width: 100%; max-width: 100%; height: auto; border-radius: 8px; margin: 0.5rem 0 1.5rem; }
+.method-steps .title { margin-bottom: 0.5rem; }
+.method-steps p { color: #4a4a4a; }
+
+.table-container { overflow-x: auto; }
+table th, table td { text-align: center !important; }
+table th:first-child, table td:first-child { text-align: left !important; }
+tr.ours td { font-weight: 700; color: #b5452b; }
+
+pre { white-space: pre; overflow-x: auto; }

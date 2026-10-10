@@ -33,7 +33,7 @@ Static, single-page site for double-blind review. No external requests, no analy
 Replace a `<div class="video-slot">` in `index.html` with:
 
 ```html
-<video controls muted playsinline preload="metadata" src="assets/FILE.mp4"></video>
+<video controls muted playsinline preload="metadata" src="./static/videos/FILE.mp4"></video>
 ```
 
 GitHub rejects files over 100 MB; keep each clip small (H.264, ~720p).
