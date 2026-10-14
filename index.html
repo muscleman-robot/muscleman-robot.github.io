@@ -4,167 +4,36 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="MuscleMan: Humanoid Whole-Body Control for Heavy-Object Prehensile Interaction. Anonymous project page for double-blind review.">
-  <title>MuscleMan</title>
+  <meta name="description" content="MuscleMan: Humanoid Whole-Body Control for Heavy-Object Prehensile Interaction">
+  <title>MuscleMan: Humanoid Whole-Body Control for Heavy-Object Prehensile Interaction</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
 </head>
 <body>
 
 <section class="hero">
   <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">MuscleMan</h1>
-          <h2 class="subtitle is-3 publication-subtitle">Humanoid Whole-Body Control for Heavy-Object Prehensile Interaction</h2>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">Anonymous Authors</span>
-          </div>
-          <div class="is-size-6 publication-authors">
-            <span class="author-block">Paper under double-blind review</span>
-          </div>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <span class="link-block">
-                <a class="external-link button is-normal is-rounded is-dark" disabled>
-                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="#videos" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fab fa-youtube"></i></span>
-                  <span>Videos</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a class="external-link button is-normal is-rounded is-dark" disabled>
-                  <span class="icon"><i class="fab fa-github"></i></span>
-                  <span>Code (coming soon)</span>
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
+    <div class="container is-max-desktop has-text-centered">
+      <h1 class="title is-2 publication-title">MuscleMan: Humanoid Whole-Body Control for Heavy-Object Prehensile Interaction</h1>
+      <div class="is-size-5 publication-authors">
+        <span class="author-block">Anonymous Submission</span>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- TEASER: replace the placeholder with the new Fig. 1 or a teaser video, e.g.
-     <video id="teaser" autoplay muted loop playsinline height="100%"><source src="./static/videos/teaser.mp4" type="video/mp4"></video>
-     Blur faces and lab signage first, and strip video metadata. -->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <div class="placeholder">Teaser video coming soon</div>
-      <h2 class="subtitle has-text-centered teaser-caption">
-        <span class="dnerf">MuscleMan</span> autonomously clean-and-jerks <b>11.3&nbsp;kg (25&nbsp;lb)</b> with a commercial off-the-shelf barbell,
-        nearly twice the combined rated load of the robot's arms and about eleven times that of its hands.
-      </h2>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Humanoid motion trackers now reproduce diverse human motion on real hardware, yet whole-body loco-manipulation remains limited to light objects and largely non-dexterous interaction.
-            Heavy prehensile lifting exposes the limits of pure imitation: human demonstrations provide only kinematic references, and under load the embodiment gap between human and humanoid drives the robot's weakest actuators into torque saturation and thermal shutdown.
-          </p>
-          <p>
-            We present <span class="dnerf">MuscleMan</span>, a whole-body dexterous loco-manipulation framework that constructs dynamically feasible references from human videos, couples separately pretrained whole-body and dexterous-hand priors in a dual-stream policy, and trains it to avoid overloading and overheating its motors under a progressive payload curriculum.
-            On hardware, MuscleMan exceeds the manufacturer's payload limits and clean-and-jerks 11.3&nbsp;kg with a commercial barbell under Olympic-style judging, making this the heaviest autonomous lift by a humanoid of its size.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="columns is-centered has-text-centered stats">
-      <div class="column"><p class="stat-num">11.3&nbsp;kg</p><p class="stat-lbl">autonomous clean and jerk</p></div>
-      <div class="column"><p class="stat-num">~1.9&times;</p><p class="stat-lbl">combined arm rating, 2&nbsp;&times;&nbsp;3&nbsp;kg</p></div>
-      <div class="column"><p class="stat-num">~11&times;</p><p class="stat-lbl">combined hand rating, 2&nbsp;&times;&nbsp;0.5&nbsp;kg</p></div>
     </div>
   </div>
 </section>
 
 <section class="section" id="videos">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Heavy Lifting on Hardware</h2>
-    <!-- Replace each .placeholder with:
-         <video autoplay muted loop playsinline controls src="./static/videos/FILE.mp4"></video> -->
-    <div class="columns is-multiline">
-      <div class="column is-one-third"><div class="placeholder small">6.8&nbsp;kg (15&nbsp;lb)</div><p class="video-caption">Empty barbell</p></div>
-      <div class="column is-one-third"><div class="placeholder small">9.1&nbsp;kg (20&nbsp;lb)</div><p class="video-caption">Barbell with plates</p></div>
-      <div class="column is-one-third"><div class="placeholder small">11.3&nbsp;kg (25&nbsp;lb)</div><p class="video-caption">Heaviest lift</p></div>
-    </div>
-
-    <h2 class="title is-3 has-text-centered">Simulation</h2>
-    <div class="placeholder">Payload sweep in simulation</div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Method</h2>
-    <div class="content has-text-justified">
-      <p>Copying a human lift overloads the robot's weakest joints, so <span class="dnerf">MuscleMan</span> adapts the demonstration to the robot in three stages.</p>
-    </div>
-    <img src="./assets/pipeline.png" class="method-figure" alt="MuscleMan pipeline: load-aware reference construction from one human video, a dual-stream body and hand policy, and load- and thermal-aware PPO training.">
-    <div class="columns method-steps">
-      <div class="column">
-        <h3 class="title is-5">Load-aware reference</h3>
-        <p>Reconstruct the human lift from video, retarget it to the robot, repair the grasp, and verify that no joint exceeds its torque limit under load.</p>
+    <div class="columns is-multiline is-centered">
+      <!-- Per-video block: paste a copy above this comment for each video in static/videos/, then set src and the caption.
+      <div class="column is-half">
+        <video autoplay muted loop playsinline controls src="./static/videos/FILE.mp4"></video>
+        <p class="video-caption">CAPTION</p>
       </div>
-      <div class="column">
-        <h3 class="title is-5">Dual-stream policy</h3>
-        <p>A body stream and a dexterous-hand stream are pretrained separately on suitable data, then coupled through a zero-initialized attention block.</p>
-      </div>
-      <div class="column">
-        <h3 class="title is-5">Load- and thermal-aware training</h3>
-        <p>A torque penalty on the most loaded joint, a per-motor thermal model fitted to hardware logs, and a progressive payload curriculum.</p>
-      </div>
+      -->
     </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Results in Simulation</h2>
-    <div class="content has-text-centered"><p>Only the full recipe completes lifts. Completed lifts out of 64 episodes per payload.</p></div>
-    <div class="table-container">
-      <table class="table is-fullwidth is-hoverable">
-        <thead><tr><th>Recipe</th><th>0.5&nbsp;kg</th><th>6.8&nbsp;kg</th><th>9.1&nbsp;kg</th><th>11.3&nbsp;kg</th></tr></thead>
-        <tbody>
-          <tr><td>Raw reference, scratch MLP</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>Repaired reference, scratch MLP</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>Dual-stream policy</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr><td>+ separate task pretraining</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-          <tr class="ours"><td>+ payload curriculum, MuscleMan</td><td>47</td><td>44</td><td>47</td><td>22</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@inproceedings{anonymous2026muscleman,
-  title     = {MuscleMan: Humanoid Whole-Body Control for Heavy-Object Prehensile Interaction},
-  author    = {Anonymous Authors},
-  booktitle = {Under review},
-  year      = {2026}
-}</code></pre>
   </div>
 </section>
 
@@ -172,9 +41,8 @@
   <div class="container">
     <div class="content has-text-centered">
       <p>
-        Anonymous project page for double-blind review.
         Website template adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>,
-        licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+        licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
       </p>
     </div>
   </div>
