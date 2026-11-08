@@ -121,7 +121,7 @@ body.in-hero .toc { opacity: 0; pointer-events: none; }
 @media (min-width: 1400px) { .toc { display: flex; } }
 
 /* ------------------------------------------------------------------ layout */
-main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); }
+main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px) clamp(72px, 9vw, 112px); }
 .section { padding-top: clamp(64px, 9vw, 112px); scroll-margin-top: 8px; }
 .section-head { max-width: 780px; margin-bottom: 26px; }
 .eyebrow {
@@ -146,6 +146,11 @@ h3 { font-family: var(--display); letter-spacing: -.01em; }
 .authors-card { margin-top: clamp(28px, 5vw, 56px); padding: clamp(28px, 4vw, 44px) clamp(18px, 4vw, 48px); text-align: center; }
 .authors { margin: 0; font-size: 17.5px; line-height: 1.9; }
 .authors span { white-space: nowrap; }
+.authors a {
+  color: inherit; text-decoration: underline; text-decoration-color: rgb(22 24 28 / .22);
+  text-underline-offset: 4px; transition: color .2s, text-decoration-color .2s;
+}
+.authors a:hover { color: var(--accent-ink); text-decoration-color: currentColor; }
 .affils { margin: 8px 0 0; color: var(--muted); font-size: 14.5px; }
 .buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 22px; }
 .btn {
@@ -226,8 +231,6 @@ figcaption {
   background: #23262b; color: #ebe7e1; font: 500 12px var(--mono); cursor: pointer; transition: background .2s;
 }
 .copy:hover { background: #30343a; }
-
-.footer { padding: 72px 16px 56px; text-align: center; color: var(--muted); font-size: 14px; }
 
 /* ------------------------------------------------------------------ small screens */
 @media (max-width: 960px) {
