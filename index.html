@@ -3,62 +3,311 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="MuscleMan: Humanoid Whole-Body Control for Heavy-Object Prehensile Interaction">
   <title>MuscleMan: Humanoid Whole-Body Control for Heavy-Object Prehensile Interaction</title>
+  <meta name="description" content="MuscleMan: a Unitree G1 humanoid with Dex3-1 hands autonomously clean-and-jerks a barbell up to 20.4 kg, with load-aware motion references, a dual-stream body and hand policy, and thermal-aware training.">
+  <meta property="og:title" content="MuscleMan: Humanoid Whole-Body Control for Heavy-Object Prehensile Interaction">
+  <meta property="og:description" content="A Unitree G1 humanoid autonomously clean-and-jerks a barbell up to 20.4 kg.">
+  <meta property="og:image" content="https://muscleman-robot.github.io/static/img/og.jpg">
+  <meta property="og:url" content="https://muscleman-robot.github.io/">
+  <meta name="twitter:card" content="summary_large_image">
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316181c'/%3E%3Crect x='8' y='30' width='48' height='4' rx='2' fill='%23ec6a12'/%3E%3Crect x='13' y='19' width='7' height='26' rx='2' fill='%23ec6a12'/%3E%3Crect x='44' y='19' width='7' height='26' rx='2' fill='%23ec6a12'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/style.css">
 </head>
-<body>
+<body class="in-hero">
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop has-text-centered">
-      <h1 class="title is-2 publication-title">MuscleMan: Humanoid Whole-Body Control for Heavy-Object Prehensile Interaction</h1>
-      <div class="is-size-5 publication-authors">
-        <span class="author-block">Anonymous Submission</span>
-      </div>
+<!-- ============================================================ HERO: the hardware lifts, one chapter per load -->
+<header class="hero" id="top">
+  <video class="hero-video" muted playsinline preload="auto" poster="./static/img/posters/lift_45lb.jpg"></video>
+  <div class="hero-shade"></div>
+
+  <div class="hero-bar">
+    <a class="brand" href="#top">MuscleMan</a>
+    <nav class="hero-links">
+      <a href="#hardware">Hardware</a>
+      <a href="#method">Method</a>
+      <a href="#results">Results</a>
+      <a href="#renders">Simulation</a>
+      <a href="#bibtex">BibTeX</a>
+    </nav>
+  </div>
+
+  <div class="hero-copy">
+    <p class="kicker">CoRL 2026 Workshop on Contact-Rich Loco-Manipulation</p>
+    <h1>MuscleMan</h1>
+    <p class="hero-sub">Humanoid whole-body control for heavy-object prehensile interaction</p>
+    <div class="hero-load" aria-live="polite">
+      <span class="load-kg">20.4</span><span class="load-unit">kg</span>
+      <span class="load-meta"><b class="load-lb">45 lb</b> barbell &middot; clean &amp; jerk &middot; autonomous</span>
+    </div>
+  </div>
+
+  <div class="hero-chapters" role="tablist" aria-label="Hardware lifts">
+    <button class="chapter" role="tab" data-src="./static/videos/hero/lift_15lb.mp4" data-poster="./static/img/posters/lift_15lb.jpg" data-kg="6.8" data-lb="15 lb"><span>15 lb</span><i></i></button>
+    <button class="chapter" role="tab" data-src="./static/videos/hero/lift_20lb.mp4" data-poster="./static/img/posters/lift_20lb.jpg" data-kg="9.1" data-lb="20 lb"><span>20 lb</span><i></i></button>
+    <button class="chapter" role="tab" data-src="./static/videos/hero/lift_25lb.mp4" data-poster="./static/img/posters/lift_25lb.jpg" data-kg="11.3" data-lb="25 lb"><span>25 lb</span><i></i></button>
+    <button class="chapter" role="tab" data-src="./static/videos/hero/lift_35lb.mp4" data-poster="./static/img/posters/lift_35lb.jpg" data-kg="15.9" data-lb="35 lb"><span>35 lb</span><i></i></button>
+    <button class="chapter" role="tab" data-src="./static/videos/hero/lift_45lb.mp4" data-poster="./static/img/posters/lift_45lb.jpg" data-kg="20.4" data-lb="45 lb"><span>45 lb</span><i></i></button>
+    <span class="hero-note">Real hardware &middot; 1&times; speed</span>
+  </div>
+</header>
+
+<!-- ============================================================ side navigation (wide screens) -->
+<nav class="toc" aria-label="Sections">
+  <a href="#overview">Overview</a>
+  <a href="#hardware">Hardware</a>
+  <a href="#method">Method</a>
+  <a href="#results">Results</a>
+  <a href="#renders">Simulation</a>
+  <a href="#beyond">Beyond the barbell</a>
+  <a href="#bibtex">BibTeX</a>
+</nav>
+
+<main>
+
+<!-- ============================================================ authors + links -->
+<section class="card authors-card">
+  <p class="authors">
+    <span>Haoyang He<sup>1</sup></span>,
+    <span>Jay Karhade<sup>2</sup></span>,
+    <span>Karan Khanna<sup>2</sup></span>,
+    <span>Jinyao Zhou<sup>2</sup></span>,
+    <span>Abhishek Iyer<sup>1</sup></span>,
+    <span>Sebastian Scherer<sup>1,2</sup></span>,
+    <span>Xue Bin Peng<sup>3,4</sup></span>,
+    <span>Jay Patrikar<sup>1</sup></span>,
+    <span>Dong-Ki Kim<sup>1</sup></span>,
+    <span>Shayegan Omidshafiei<sup>1</sup></span>
+  </p>
+  <p class="affils"><sup>1</sup>FieldAI &nbsp; <sup>2</sup>Carnegie Mellon University &nbsp; <sup>3</sup>NVIDIA &nbsp; <sup>4</sup>Simon Fraser University</p>
+  <div class="buttons">
+    <!-- Paper: replace the span with <a class="btn" href="./static/muscleman_corl2026_workshop.pdf"> once the camera-ready PDF is in static/ -->
+    <span class="btn is-disabled" title="The camera-ready PDF will be posted here">Paper <em>soon</em></span>
+    <a class="btn" href="#hardware">Videos</a>
+    <a class="btn" href="https://contact-rich-loco-manipulation.github.io/">Workshop</a>
+    <a class="btn" href="#bibtex">BibTeX</a>
+  </div>
+</section>
+
+<!-- ============================================================ overview -->
+<section class="section" id="overview">
+  <div class="section-head">
+    <p class="eyebrow">Overview</p>
+    <h2>Heavy lifting breaks pure imitation.</h2>
+  </div>
+  <div class="card prose">
+    <p>
+      Humanoid motion trackers now reproduce diverse human motion on real hardware, yet whole-body loco-manipulation
+      remains limited to light objects and largely non-dexterous interaction. Heavy prehensile lifting exposes the
+      limits of pure imitation: human demonstrations provide only kinematic references, and under load the embodiment
+      gap between human and humanoid drives the robot's weakest actuators into torque saturation and thermal shutdown.
+    </p>
+    <p>
+      <b>MuscleMan</b> constructs dynamically feasible references from human videos, couples separately pretrained
+      whole-body and dexterous-hand priors in a dual-stream policy, and trains it to avoid overloading and overheating
+      its motors under a progressive payload curriculum. On a Unitree G1 with Dex3-1 hands it autonomously
+      clean-and-jerks a commercial barbell from 6.8&nbsp;kg up to 20.4&nbsp;kg.
+    </p>
+  </div>
+  <div class="stats">
+    <div class="stat card"><span class="stat-num">20.4<small>kg</small></span><span class="stat-label">heaviest clean &amp; jerk on hardware (45&nbsp;lb barbell)</span></div>
+    <div class="stat card"><span class="stat-num">3.4<small>&times;</small></span><span class="stat-label">the G1's combined arm payload rating (2&nbsp;&times;&nbsp;3&nbsp;kg)</span></div>
+    <div class="stat card"><span class="stat-num">43</span><span class="stat-label">joints in one policy: 29 body + 14 finger</span></div>
+  </div>
+  <p class="footnote">The workshop paper reports the 11.3&nbsp;kg (25&nbsp;lb) lift, judged by criteria adapted from Olympic weightlifting rules; the 15.9&nbsp;kg and 20.4&nbsp;kg lifts came after it.</p>
+</section>
+
+<!-- ============================================================ hardware -->
+<section class="section" id="hardware">
+  <div class="section-head">
+    <p class="eyebrow">Real hardware</p>
+    <h2>From the empty bar to 45&nbsp;lb.</h2>
+    <p class="lede">Every lift is autonomous and shown at real-time speed. The bar alone weighs 6.8&nbsp;kg; a spotter stands behind the robot for safety.</p>
+  </div>
+  <div class="grid grid-feature">
+    <figure class="media card feature">
+      <video class="lazy" data-src="./static/videos/hw/full_45lb.mp4" poster="./static/img/posters/full_45lb.jpg" muted loop playsinline preload="none"></video>
+      <figcaption><span class="chip chip-accent">45 lb &middot; 20.4 kg</span><span class="chip">new</span> Clean, front rack, jerk, overhead hold.</figcaption>
+    </figure>
+    <figure class="media card">
+      <video class="lazy" data-src="./static/videos/hw/full_35lb.mp4" poster="./static/img/posters/full_35lb.jpg" muted loop playsinline preload="none"></video>
+      <figcaption><span class="chip chip-accent">35 lb &middot; 15.9 kg</span><span class="chip">new</span></figcaption>
+    </figure>
+    <figure class="media card">
+      <video class="lazy" data-src="./static/videos/hw/full_25lb.mp4" poster="./static/img/posters/full_25lb.jpg" muted loop playsinline preload="none"></video>
+      <figcaption><span class="chip chip-accent">25 lb &middot; 11.3 kg</span><span class="chip">workshop paper</span></figcaption>
+    </figure>
+  </div>
+  <div class="grid grid-2">
+    <figure class="media card">
+      <video class="lazy" data-src="./static/videos/hw/full_20lb.mp4" poster="./static/img/posters/full_20lb.jpg" muted loop playsinline preload="none"></video>
+      <figcaption><span class="chip chip-accent">20 lb &middot; 9.1 kg</span></figcaption>
+    </figure>
+    <figure class="media card">
+      <video class="lazy" data-src="./static/videos/hw/full_15lb.mp4" poster="./static/img/posters/full_15lb.jpg" muted loop playsinline preload="none"></video>
+      <figcaption><span class="chip chip-accent">15 lb &middot; 6.8 kg</span> The empty bar.</figcaption>
+    </figure>
+  </div>
+
+  <h3 class="sub">When it goes wrong</h3>
+  <p class="lede">Heavy lifts fail in physical ways: a motor overheats, a grip slips, the bar runs away.</p>
+  <div class="grid grid-3">
+    <figure class="media card">
+      <video class="lazy" data-src="./static/videos/hw/fail_overheat.mp4" poster="./static/img/posters/fail_overheat.jpg" muted loop playsinline preload="none"></video>
+      <figcaption><span class="chip chip-warn">overheating</span> The waist-roll motor overheats mid-lift.</figcaption>
+    </figure>
+    <figure class="media card">
+      <video class="lazy" data-src="./static/videos/hw/fail_grasp.mp4" poster="./static/img/posters/fail_grasp.jpg" muted loop playsinline preload="none"></video>
+      <figcaption><span class="chip chip-warn">grasp</span> A poor grasp loses the bar.</figcaption>
+    </figure>
+    <figure class="media card">
+      <video class="lazy" data-src="./static/videos/hw/fail_35lb_early.mp4" poster="./static/img/posters/fail_35lb_early.jpg" muted loop playsinline preload="none"></video>
+      <figcaption><span class="chip chip-warn">35 lb, earlier policy</span> The bar is dropped.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================================================ method -->
+<section class="section" id="method">
+  <div class="section-head">
+    <p class="eyebrow">Method</p>
+    <h2>Human motion as a prior, not a target.</h2>
+  </div>
+  <figure class="card figure">
+    <img src="./static/img/pipeline.png" width="1864" height="910" alt="MuscleMan pipeline: load-aware reference construction from human video, a dual-stream body and hand policy, and load- and thermal-aware PPO training" loading="lazy">
+  </figure>
+  <div class="grid grid-3 steps">
+    <div class="card step">
+      <span class="step-tag">A</span>
+      <h3>Load-aware reference</h3>
+      <p>We reconstruct an Olympic gold medalist's competition clean and jerk from video (CARI4D), retarget it to the G1 with
+        Dex3-1 hands (object-conditioned GMR), and refine it to minimize the <em>normalized peak joint torque</em> under load,
+        keeping only references that a physics verifier confirms are feasible.</p>
+    </div>
+    <div class="card step">
+      <span class="step-tag">B</span>
+      <h3>Dual-stream policy</h3>
+      <p>A body stream (warm-started from the SONIC whole-body controller, 29 joints) and a hand stream (pretrained on
+        floating Dex3 hands, 14 finger joints) are coupled by a single zero-initialized residual attention block, then fine-tuned
+        together on the lift.</p>
+    </div>
+    <div class="card step">
+      <span class="step-tag">C</span>
+      <h3>Load- and thermal-aware training</h3>
+      <p>PPO with object-tracking rewards, a smooth-max penalty on the most loaded motor, and a motor thermal model fitted to
+        hardware logs (penalty above 100&nbsp;&deg;C, shutdown at 130&nbsp;&deg;C), under a payload curriculum that grows in
+        0.5&nbsp;kg steps.</p>
     </div>
   </div>
 </section>
 
-<section class="section" id="videos">
-  <div class="container is-max-desktop">
-    <div class="columns is-multiline is-centered">
-      <div class="column is-half">
-        <video autoplay muted loop playsinline controls src="./static/videos/success_15lb_full.mp4"></video>
-        <p class="video-caption">6.8kg (15lb) lift</p>
-      </div>
-      <div class="column is-half">
-        <video autoplay muted loop playsinline controls src="./static/videos/step1kbase_20lb_success.mp4"></video>
-        <p class="video-caption">9.1kg (20lb) lift</p>
-      </div>
-      <div class="column is-half">
-        <video autoplay muted loop playsinline controls src="./static/videos/success_25lb.mp4"></video>
-        <p class="video-caption">11.3kg (25lb) lift</p>
-      </div>
-      <!-- Per-video block: paste a copy above this comment for each video in static/videos/, then set src and the caption.
-      <div class="column is-half">
-        <video autoplay muted loop playsinline controls src="./static/videos/FILE.mp4"></video>
-        <p class="video-caption">CAPTION</p>
-      </div>
-      -->
-    </div>
+<!-- ============================================================ simulation results (workshop paper) -->
+<section class="section" id="results">
+  <div class="section-head">
+    <p class="eyebrow">Results in simulation</p>
+    <h2>Only the full recipe lifts heavy.</h2>
+    <p class="lede">Success rate over 64 deterministic episodes per payload in Isaac Lab, after 12,500 training iterations (workshop paper, Table&nbsp;1).</p>
+  </div>
+  <div class="card table-wrap">
+    <table class="results">
+      <thead>
+        <tr><th>Configuration</th><th>0.5 kg</th><th>6.8 kg</th><th>9.1 kg</th><th>11.3 kg</th><th>13.6 kg</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>MLP</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td></tr>
+        <tr><td>SONIC + binary grasp</td><td style="--v:.80">79.7</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td></tr>
+        <tr><td>GRAIL, pretrained hierarchy</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td></tr>
+        <tr><td>GRAIL, SONIC prior</td><td style="--v:.59">59.4</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td></tr>
+        <tr class="ours"><td>MuscleMan</td><td style="--v:.61">60.9</td><td style="--v:.59">59.4</td><td style="--v:.45">45.3</td><td style="--v:.20">20.3</td><td class="z">&ndash;</td></tr>
+        <tr class="abl"><td>&ensp;w/o reference refinement</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td></tr>
+        <tr class="abl"><td>&ensp;w/o task pretraining</td><td style="--v:.59">59.4</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td></tr>
+        <tr class="abl"><td>&ensp;w/o mass curriculum</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td><td class="z">&ndash;</td></tr>
+        <tr class="abl"><td>&ensp;w/o thermal training</td><td style="--v:.84">84.4</td><td style="--v:.23">23.4</td><td style="--v:.17">17.2</td><td class="z">&ndash;</td><td class="z">&ndash;</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid grid-3 findings">
+    <div class="card finding"><h3>Imitation alone does not lift.</h3><p>Without reference refinement no lift succeeds at any load. At 11.3&nbsp;kg, GRAIL tracks the body reference more closely (0.10 vs 0.42&nbsp;rad joint error) yet completes no lifts.</p></div>
+    <div class="card finding"><h3>Heat is the hidden limit.</h3><p>Without thermal training, success falls to 0% at 11.3&nbsp;kg. At that load, thermal training lowers the mean peak motor temperature from 97.8 to 76.9&nbsp;&deg;C and overheat shutdowns from 12.5% to 3.1%.</p></div>
+    <div class="card finding"><h3>Pretraining and the curriculum unlock load.</h3><p>Without task pretraining the policy lifts only the 0.5&nbsp;kg load; without the payload curriculum it lifts nothing.</p></div>
+  </div>
+  <figure class="card figure">
+    <img src="./static/img/teaser.png" width="2580" height="720" alt="Top: the hardware clean and jerk. Bottom: the simulated lift colored by joint temperature from 50 to 130 degrees Celsius" loading="lazy">
+    <figcaption>Hardware lift (top) and the simulated lift colored by joint temperature (bottom).</figcaption>
+  </figure>
+</section>
+
+<!-- ============================================================ Blender renders of simulated rollouts -->
+<section class="section" id="renders">
+  <div class="section-head">
+    <p class="eyebrow">Simulation, rendered</p>
+    <h2>Every frame is a simulated rollout.</h2>
+    <p class="lede">Poses recorded from deterministic evaluation episodes of trained policies in Isaac Lab, re-rendered in Blender Cycles. Nothing is keyframed by hand.</p>
+  </div>
+  <figure class="media card wide">
+    <video class="lazy" data-src="./static/videos/sim/barbell_hero.mp4" poster="./static/img/posters/barbell_hero.jpg" muted loop playsinline preload="none"></video>
+    <figcaption>20.4&nbsp;kg clean and jerk in real time, the clean at 0.3&times;, a frozen-time orbit of the catch, and the jerk at 0.35&times;. Orange: the path of the near plate.</figcaption>
+  </figure>
+  <figure class="media card wide">
+    <video class="lazy" data-src="./static/videos/sim/barbell_lineup.mp4" poster="./static/img/posters/barbell_lineup.jpg" muted loop playsinline preload="none"></video>
+    <figcaption>One policy at 6.8, 11.3, 15.9 and 20.4&nbsp;kg, synchronized.</figcaption>
+  </figure>
+  <figure class="media card wide">
+    <video class="lazy strip" data-src="./static/videos/sim/barbell_methods.mp4" poster="./static/img/posters/barbell_methods.jpg" muted loop playsinline preload="none"></video>
+    <figcaption>20.4&nbsp;kg with three ways of handling motor heat: unconstrained PPO, a thermal control-barrier filter, and a Lagrangian thermal constraint.</figcaption>
+  </figure>
+</section>
+
+<!-- ============================================================ other tasks (ongoing work) -->
+<section class="section" id="beyond">
+  <div class="section-head">
+    <p class="eyebrow">Beyond the barbell &middot; ongoing work</p>
+    <h2>The same recipe, other heavy objects.</h2>
+    <p class="lede">Simulation results from our current runs. At the heaviest loads only some evaluation episodes succeed; we show successful ones.</p>
+  </div>
+  <figure class="media card wide">
+    <video class="lazy" data-src="./static/videos/sim/group_three_tasks.mp4" poster="./static/img/posters/group_three_tasks.jpg" muted loop playsinline preload="none"></video>
+    <figcaption>Three separate rollouts composited in one scene: a 349&nbsp;kg cart push, a 14.2&nbsp;kg ladder carry and a 20.4&nbsp;kg clean and jerk.</figcaption>
+  </figure>
+  <div class="grid grid-2">
+    <figure class="media card">
+      <video class="lazy" data-src="./static/videos/sim/ladder_lineup.mp4" poster="./static/img/posters/ladder_lineup.jpg" muted loop playsinline preload="none"></video>
+      <figcaption><span class="chip chip-accent">ladder</span> A 14.2&nbsp;kg aluminium A-frame, carried 3&nbsp;m; one policy at 13.6 to 20.4&nbsp;kg.</figcaption>
+    </figure>
+    <figure class="media card">
+      <video class="lazy" data-src="./static/videos/sim/cart_lineup.mp4" poster="./static/img/posters/cart_lineup.jpg" muted loop playsinline preload="none"></video>
+      <figcaption><span class="chip chip-accent">cart</span> A 22&nbsp;kg platform cart with one to five layers of 10.9&nbsp;kg concrete blocks (87 to 349&nbsp;kg), pushed 5.2&nbsp;m.</figcaption>
+    </figure>
   </div>
 </section>
+
+<!-- ============================================================ citation -->
+<section class="section" id="bibtex">
+  <div class="section-head">
+    <p class="eyebrow">Citation</p>
+    <h2>BibTeX</h2>
+  </div>
+  <div class="card bibtex">
+    <button class="copy" type="button" data-target="bib">Copy</button>
+<pre id="bib">@inproceedings{he2026muscleman,
+  title     = {MuscleMan: Humanoid Whole-Body Control for Heavy-Object Prehensile Interaction},
+  author    = {He, Haoyang and Karhade, Jay and Khanna, Karan and Zhou, Jinyao and Iyer, Abhishek and
+               Scherer, Sebastian and Peng, Xue Bin and Patrikar, Jay and Kim, Dong-Ki and Omidshafiei, Shayegan},
+  booktitle = {CoRL 2026 Workshop on Contact-Rich Loco-Manipulation},
+  year      = {2026}
+}</pre>
+  </div>
+</section>
+
+</main>
 
 <footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <p>
-        Website template adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>,
-        licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
-      </p>
-    </div>
-  </div>
+  <p>Correspondence: <a href="mailto:haoyang@fieldai.com">haoyang@fieldai.com</a></p>
 </footer>
 
+<script src="./static/js/main.js" defer></script>
 </body>
 </html>
