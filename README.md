@@ -14,8 +14,8 @@ seek in videos and which GitHub Pages supports.
 
 ## Media
 
-- `static/videos/hero/`: one clip per hardware lift (15, 20, 25, 35 and 45 lb), trimmed from the grasp to the overhead hold.
-  The hero plays them in order; each `.chapter` button in `index.html` names its clip, poster and load.
+- `static/videos/hero/`: one clip per hardware lift (45, 35, 25, 20 and 15 lb), trimmed from the grasp to the overhead hold.
+  The hero plays them in the order of the `.chapter` buttons in `index.html`; each button names its clip, poster and load.
 - `static/videos/hw/`: the hardware takes shown in the Hardware section, including the failure cases.
 - `static/videos/sim/`: Blender renders of simulated rollouts.
 - `static/img/posters/`: each video's first frame, shown until it starts playing.

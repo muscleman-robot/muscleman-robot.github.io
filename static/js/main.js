@@ -1,7 +1,7 @@
 (() => {
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Hero: the hardware lifts as chapters, climbing from the empty bar to 45 lb and looping.
+  // Hero: the hardware lifts as chapters, from 45 lb down to the empty bar, looping.
   const hero = document.querySelector(".hero-video");
   const tabs = [...document.querySelectorAll(".chapter")];
   const kg = document.querySelector(".load-kg");
@@ -35,12 +35,8 @@
   hero.addEventListener("pause", () => cancelAnimationFrame(frame));
   tabs.forEach((tab, j) => tab.addEventListener("click", () => show(j)));
 
-  if (reduceMotion) {
-    show(tabs.length - 1, false);
-    hero.controls = true;
-  } else {
-    show(0);
-  }
+  show(0, !reduceMotion);
+  if (reduceMotion) hero.controls = true;
 
   new IntersectionObserver(([entry]) => {
     document.body.classList.toggle("in-hero", entry.isIntersecting);
